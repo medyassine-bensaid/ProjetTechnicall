@@ -17,6 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:backgroundTint="#808080"
+            android:visibility="gone"
             app:popupTheme="@style/Theme.ProjetTechnicall.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -32,6 +33,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_dialog_email"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

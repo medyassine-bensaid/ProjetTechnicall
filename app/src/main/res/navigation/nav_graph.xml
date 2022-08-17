@@ -13,10 +13,25 @@
         <action
             android:id="@+id/action_firstFragment_to_signUp"
             app:destination="@id/signUp" />
+        <action
+            android:id="@+id/action_firstFragment_to_serviceFragment"
+            app:destination="@id/serviceFragment" />
     </fragment>
     <activity
         android:id="@+id/signUp"
         android:name="com.example.projettechnicall.SignUp"
         android:label="activity_sign_up"
-        tools:layout="@layout/activity_sign_up" />
+        tools:layout="@layout/activity_sign_up"/>
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="com.example.projettechnicall.ServiceFragment"
+        android:label="fragment_service"
+        tools:layout="@layout/fragment_service" >
+        <action
+            android:id="@+id/action_serviceFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <!--    <action-->
+<!--        android:id="@+id/action_signUp_to_firstFragment"-->
+<!--        app:destination="@id/firstFragment"/></activity>-->
 </navigation>

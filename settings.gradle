@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ProjetTechnicall"
 include ':app'
+include ':myapplication'
