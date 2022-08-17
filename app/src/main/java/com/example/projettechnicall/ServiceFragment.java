@@ -9,10 +9,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import com.example.projettechnicall.databinding.FragmentSecondBinding;
 import com.example.projettechnicall.databinding.FragmentServiceBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,6 +56,7 @@ public class ServiceFragment extends Fragment {
                 binding.Login.setText("Welcome "
                         +dataSnapshot.child(currentUser.getUid()).getValue(User.class).full_name
                         +"!\nYou are a ..?");
+                
                 binding.PlombierChoice.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -66,7 +64,7 @@ public class ServiceFragment extends Fragment {
                         specialities.put(currentUser.getUid(), "Plombier");
                         DataRef.updateChildren(specialities);
                         NavHostFragment.findNavController(ServiceFragment.this)
-                                .navigate(R.id.action_serviceFragment_to_firstFragment);
+                                .navigate(R.id.action_serviceFragment_to_technicianFragment);
                     }
                 });
                 binding.ElectricienChoice.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +74,7 @@ public class ServiceFragment extends Fragment {
                         specialities.put(currentUser.getUid(), "Electricien");
                         DataRef.updateChildren(specialities);
                         NavHostFragment.findNavController(ServiceFragment.this)
-                                .navigate(R.id.action_serviceFragment_to_firstFragment);
+                                .navigate(R.id.action_serviceFragment_to_technicianFragment);
                     }
                 });
                 binding.ClimaticienChoice.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +84,7 @@ public class ServiceFragment extends Fragment {
                         specialities.put(currentUser.getUid(), "Climaticien");
                         DataRef.updateChildren(specialities);
                         NavHostFragment.findNavController(ServiceFragment.this)
-                                .navigate(R.id.action_serviceFragment_to_firstFragment);
+                                .navigate(R.id.action_serviceFragment_to_technicianFragment);
                     }
                 });
                 binding.MecanicienChoice.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +94,7 @@ public class ServiceFragment extends Fragment {
                         specialities.put(currentUser.getUid(), "Mecanicien");
                         DataRef.updateChildren(specialities);
                         NavHostFragment.findNavController(ServiceFragment.this)
-                                .navigate(R.id.action_serviceFragment_to_firstFragment);
+                                .navigate(R.id.action_serviceFragment_to_technicianFragment);
                     }
                 });
                 binding.MaconChoice.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +104,7 @@ public class ServiceFragment extends Fragment {
                         specialities.put(currentUser.getUid(), "Maçon");
                         DataRef.updateChildren(specialities);
                         NavHostFragment.findNavController(ServiceFragment.this)
-                                .navigate(R.id.action_serviceFragment_to_firstFragment);
+                                .navigate(R.id.action_serviceFragment_to_technicianFragment);
                     }
                 });
             }

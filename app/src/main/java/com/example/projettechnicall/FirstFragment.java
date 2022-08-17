@@ -1,21 +1,17 @@
 package com.example.projettechnicall;
 
-import android.content.Intent;
-import android.graphics.Typeface;
+
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -25,9 +21,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.io.File;
-import java.util.Arrays;
 
 public class FirstFragment extends Fragment {
 
@@ -127,8 +126,27 @@ public class FirstFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    NavHostFragment.findNavController(FirstFragment.this)
-                            .navigate(R.id.action_firstFragment_to_serviceFragment);
+                    DatabaseReference DatarefS = FirebaseDatabase.getInstance().getReference("Specialities");
+
+                    DatarefS.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            boolean b = snapshot.child(mAuth.getCurrentUser().getUid()).exists();
+                            if (b) {
+                                NavHostFragment.findNavController(FirstFragment.this)
+                                        .navigate(R.id.action_firstFragment_to_technicianFragment);
+                            }
+                            else {
+                                NavHostFragment.findNavController(FirstFragment.this)
+                                        .navigate(R.id.action_firstFragment_to_serviceFragment);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            System.out.println("The read failed: " + error.getCode());
+                        }
+                    });
                 }
                 else
                     Toast.makeText(getActivity().getApplication(), "Email or password is invalid!" , Toast.LENGTH_LONG).show();

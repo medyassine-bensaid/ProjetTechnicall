@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_firstFragment_to_serviceFragment"
             app:destination="@id/serviceFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_technicianFragment"
+            app:destination="@id/technicianFragment" />
     </fragment>
     <activity
         android:id="@+id/signUp"
@@ -28,9 +31,14 @@
         android:label="fragment_service"
         tools:layout="@layout/fragment_service" >
         <action
-            android:id="@+id/action_serviceFragment_to_firstFragment"
-            app:destination="@id/firstFragment" />
+            android:id="@+id/action_serviceFragment_to_technicianFragment"
+            app:destination="@id/technicianFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/technicianFragment"
+        android:name="com.example.projettechnicall.TechnicianFragment"
+        android:label="fragment_technician"
+        tools:layout="@layout/fragment_technician" />
     <!--    <action-->
 <!--        android:id="@+id/action_signUp_to_firstFragment"-->
 <!--        app:destination="@id/firstFragment"/></activity>-->

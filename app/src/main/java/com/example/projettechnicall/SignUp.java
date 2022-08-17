@@ -71,7 +71,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button3:
-                System.out.println(((RadioGroup)findViewById(R.id.radioGroup)).getCheckedRadioButtonId());signUp(); break;
+                signUp(); break;
             case R.id.button4:startActivity(new Intent(this,FirstFragment.class));
             break;
         }
@@ -152,7 +152,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
                                     Toast.makeText(SignUp.this , "User has been registred successfully !" , Toast.LENGTH_LONG).show();
-                                    //startActivity(new Intent(this,FirstFragment.class));
+                                    startActivity(new Intent(getApplicationContext(), FirstFragment.class));
                                 }
                                 else
                                     Toast.makeText(SignUp.this , "Registration Failed !" , Toast.LENGTH_LONG).show();
