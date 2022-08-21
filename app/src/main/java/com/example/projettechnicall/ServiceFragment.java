@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.projettechnicall.databinding.FragmentServiceBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +47,7 @@ public class ServiceFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
@@ -56,7 +59,8 @@ public class ServiceFragment extends Fragment {
                 binding.Login.setText("Welcome "
                         +dataSnapshot.child(currentUser.getUid()).getValue(User.class).full_name
                         +"!\nYou are a ..?");
-                
+
+
                 binding.PlombierChoice.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

@@ -25,6 +25,7 @@
         android:src="@drawable/rectangle_grey" />
 
     <LinearLayout
+        android:id="@+id/profile"
         android:layout_width="352dp"
         android:layout_height="101dp"
         android:layout_marginLeft="30dp"

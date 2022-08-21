@@ -38,7 +38,32 @@
         android:id="@+id/technicianFragment"
         android:name="com.example.projettechnicall.TechnicianFragment"
         android:label="fragment_technician"
-        tools:layout="@layout/fragment_technician" />
+        tools:layout="@layout/fragment_technician" >
+        <action
+            android:id="@+id/action_technicianFragment_to_profileManagementFragment"
+            app:destination="@id/profileManagementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileManagementFragment"
+        android:name="com.example.projettechnicall.ProfileManagementFragment"
+        android:label="fragment_profile_management"
+        tools:layout="@layout/fragment_profile_management" >
+        <action
+            android:id="@+id/action_profileManagementFragment_to_technicianFragment"
+            app:destination="@id/technicianFragment" />
+        <action
+            android:id="@+id/action_profileManagementFragment_to_changePwdFragment"
+            app:destination="@id/changePwdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePwdFragment"
+        android:name="com.example.projettechnicall.ChangePwdFragment"
+        android:label="fragment_change_pwd"
+        tools:layout="@layout/fragment_change_pwd" >
+        <action
+            android:id="@+id/action_changePwdFragment_to_profileManagementFragment"
+            app:destination="@id/profileManagementFragment" />
+    </fragment>
     <!--    <action-->
 <!--        android:id="@+id/action_signUp_to_firstFragment"-->
 <!--        app:destination="@id/firstFragment"/></activity>-->
