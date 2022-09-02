@@ -3,12 +3,14 @@ package com.example.projettechnicall;
 
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,14 +20,22 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.projettechnicall.databinding.FragmentFirstBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Locale;
+import java.util.stream.Stream;
 
 
 public class FirstFragment extends Fragment {
@@ -35,7 +45,7 @@ public class FirstFragment extends Fragment {
     private Button login ;
     private Button SignUp ;
     private FirebaseAuth mAuth ;
-
+    private TextView forgotpass ;
 
 
 
@@ -54,7 +64,27 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
+
+
+        //System.out.println(Character.toChars('a'+1));
         mAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase.getInstance()
+                .getReference()
+                .child("Users")
+                .orderByChild("full_name")
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    System.out.println(ds.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         binding.editTextTextPassword3.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -92,6 +122,13 @@ public class FirstFragment extends Fragment {
             }
         });
 
+        binding.forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_firstFragment_to_forgotPassword);
+            }
+        });
     }
 
     private void userLogin() {
@@ -105,11 +142,11 @@ public class FirstFragment extends Fragment {
             return;
         }
 
-      //  if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-      //      binding.editTextTextPersonName.setError("Please enter a valid email");
-      //      binding.editTextTextPersonName.requestFocus();
-      //      return;
-      //  }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.editTextTextPersonName.setError("Please enter a valid email");
+            binding.editTextTextPersonName.requestFocus();
+            return;
+        }
 
         if (password.isEmpty()) {
             binding.editTextTextPassword3.setError("Password is required!");
@@ -129,18 +166,41 @@ public class FirstFragment extends Fragment {
                 if (task.isSuccessful()) {
                     DatabaseReference DatarefS = FirebaseDatabase.getInstance().getReference("Specialities");
 
-                    DatarefS.addValueEventListener(new ValueEventListener() {
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                    DatarefS.child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            boolean b = snapshot.child(mAuth.getCurrentUser().getUid()).exists();
-                            if (b) {
-                                NavHostFragment.findNavController(FirstFragment.this)
-                                        .navigate(R.id.action_firstFragment_to_technicianFragment);
-                            }
-                            else {
-                                NavHostFragment.findNavController(FirstFragment.this)
-                                        .navigate(R.id.action_firstFragment_to_serviceFragment);
-                            }
+                            FirebaseDatabase.getInstance()
+                                    .getReference()
+                                    .child("Users")
+                                    .child(currentUser.getUid())
+                                    .addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dsnapshot) {
+                                    boolean b = snapshot.exists();
+                                    boolean c = dsnapshot.getValue(User.class).type.equals("Technician");
+                                    if (b||!c) {
+                                        try {
+                                            System.out.println(b);
+                                            NavHostFragment.findNavController(FirstFragment.this)
+                                                    .navigate(R.id.action_firstFragment_to_technicianFragment);
+                                            b = false;
+                                        }
+                                        catch (Exception e){
+
+                                        }
+                                    }
+                                    else {
+                                        NavHostFragment.findNavController(FirstFragment.this)
+                                                .navigate(R.id.action_firstFragment_to_serviceFragment);
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
 
                         @Override
@@ -149,16 +209,15 @@ public class FirstFragment extends Fragment {
                         }
                     });
                 }
-                else
-                    Toast.makeText(getActivity().getApplication(), "Email or password is invalid!" , Toast.LENGTH_LONG).show();
+
             };
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Email or password is invalid!" , Toast.LENGTH_LONG).show();
+            }
+
         });
 
-
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        binding = null;
-//    }
-
-}}
+    }
+}

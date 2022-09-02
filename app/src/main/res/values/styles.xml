@@ -2,5 +2,10 @@
 <resources>
     <style name="Button.White" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@android:color/background_dark</item>
+        <item name="android:navigationBarColor">@color/grey_background</item>
+    </style>
+    <style name="ratingcolor">
+        <item name="colorControlNormal">@color/grey_background</item>
+        <item name="colorControlActivated">#0000FF</item>
     </style>
 </resources>

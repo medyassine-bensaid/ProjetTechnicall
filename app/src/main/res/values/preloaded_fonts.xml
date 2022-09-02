@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/andika_new_basic</item>
         <item>@font/archivo_black</item>
         <item>@font/poppins_bold</item>
         <item>@font/poppins_thin</item>
+        <item>@font/pt_sans_bold_italic</item>
     </array>
 </resources>

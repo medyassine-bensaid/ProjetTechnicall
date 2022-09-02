@@ -40,7 +40,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/archivo_black"
-                android:text="Password :"
+                android:text="Mot de Passe :"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -48,10 +48,9 @@
                 android:id="@+id/newpass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/archivo_black"
-                android:text="New Password :"
+                android:text="Nouveau\nMot de Passe :"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -59,9 +58,8 @@
                 android:id="@+id/confnewpass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:fontFamily="@font/archivo_black"
-                android:text="Confirm\nNew Password :"
+                android:text="Confirmer le\nouveau mot\nde Passe :"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 

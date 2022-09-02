@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_firstFragment_to_technicianFragment"
             app:destination="@id/technicianFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_forgotPassword"
+            app:destination="@id/forgotPassword" />
     </fragment>
     <activity
         android:id="@+id/signUp"
@@ -42,6 +45,12 @@
         <action
             android:id="@+id/action_technicianFragment_to_profileManagementFragment"
             app:destination="@id/profileManagementFragment" />
+        <action
+            android:id="@+id/action_technicianFragment_to_mainServicesFragment"
+            app:destination="@id/mainServicesFragment" />
+        <action
+            android:id="@+id/action_technicianFragment_to_rendezVousFragment"
+            app:destination="@id/rendezVousFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileManagementFragment"
@@ -64,6 +73,28 @@
             android:id="@+id/action_changePwdFragment_to_profileManagementFragment"
             app:destination="@id/profileManagementFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mainServicesFragment"
+        android:name="com.example.projettechnicall.MainServicesFragment"
+        android:label="fragment_main_services"
+        tools:layout="@layout/fragment_main_services" >
+        <action
+            android:id="@+id/action_mainServicesFragment_to_technicianFragment"
+            app:destination="@id/technicianFragment" />
+        <action
+            android:id="@+id/action_mainServicesFragment_to_rendezVousFragment"
+            app:destination="@id/rendezVousFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rendezVousFragment"
+        android:name="com.example.projettechnicall.RendezVousFragment"
+        android:label="fragment_rendez_vous"
+        tools:layout="@layout/fragment_rendez_vous" />
+    <fragment
+        android:id="@+id/forgotPassword"
+        android:name="com.example.projettechnicall.ForgotPassword"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
     <!--    <action-->
 <!--        android:id="@+id/action_signUp_to_firstFragment"-->
 <!--        app:destination="@id/firstFragment"/></activity>-->

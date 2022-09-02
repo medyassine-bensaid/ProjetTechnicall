@@ -10,9 +10,19 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="132dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="613dp"
+        android:layout_height="653dp"
         android:layout_marginTop="130dp"
         android:src="@drawable/rectangle_white" />
 

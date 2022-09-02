@@ -4,25 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#808080"
+    android:background="@color/grey_background"
     tools:context=".FirstFragment">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="412dp"
+        android:layout_height="693dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/rectangle_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="119dp"
+        android:layout_width="wrap_content"
         android:layout_height="49dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="96dp"
         android:fontFamily="@font/archivo_black"
         android:shadowColor="#FF0000"
-        android:text="Log in"
+        android:text="Bienvenue"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#00CAFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -70,7 +80,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Password"
+        android:text="Mot de Passe"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
@@ -79,31 +89,31 @@
 
     <Button
         android:id="@+id/button"
-        android:text="Log In"
-        android:layout_width="122dp"
+        android:layout_width="143dp"
         android:layout_height="48dp"
         android:layout_marginBottom="240dp"
         android:backgroundTint="#1E90FF"
         android:fontFamily="@font/poppins_bold"
         android:scrollbarStyle="outsideInset"
+        android:text="Se connecter"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="#FF0000" />
 
     <Button
         android:id="@+id/button2"
-        android:text="Sign Up"
         android:layout_width="122dp"
         android:layout_height="48dp"
         android:layout_marginBottom="240dp"
         android:backgroundTint="#00BABA"
         android:fontFamily="@font/poppins_bold"
         android:scrollbarStyle="outsideInset"
+        android:text="S'inscrire"
         android:textAllCaps="false"
         android:textColor="#808080"
         android:textStyle="bold"
@@ -120,7 +130,7 @@
         android:layout_marginBottom="196dp"
         android:fontFamily="@font/poppins_bold"
         android:shadowColor="@color/design_default_color_error"
-        android:text="Or connect using"
+        android:text="Ou bien connectez-vous en utilisant"
         android:textColor="@color/black"
         android:textColorHighlight="@color/design_default_color_error"
         android:textColorHint="@color/design_default_color_error"
@@ -147,26 +157,48 @@
         android:id="@+id/google_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
+        android:layout_marginStart="80dp"
         android:src="@drawable/common_google_signin_btn_icon_dark"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.319"
+        app:layout_constraintVertical_bias="0.28"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/fb_icon"
         android:layout_width="61dp"
         android:layout_height="57dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginEnd="80dp"
         android:src="@drawable/fb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.28" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="132dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/forgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Mot de passe oublié?"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fb_icon"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toEndOf="@+id/google_btn"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/fb_icon"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
